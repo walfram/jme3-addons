@@ -31,7 +31,9 @@ dependencies {
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 	implementation 'org.reflections:reflections:0.9.12'
     
-    implementation 'com.github.stephengold:Heart:5.5.0'
+    implementation 'com.github.stephengold:Heart:6.0.0'
+    
+    implementation 'com.simsilica:sio2:1.5.0'
     
     implementation 'org.codehaus.groovy:groovy-all:3.0.3'
     implementation 'com.simsilica:lemur:1.14.0'
