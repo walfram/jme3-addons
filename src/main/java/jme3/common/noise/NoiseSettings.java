@@ -20,7 +20,7 @@ public final class NoiseSettings {
 	public float mLacunarity = 2.0f;
 	public float mGain = 0.5f;
 
-	public void bind(FastNoiseLite noise) {
+	public void applyTo(FastNoiseLite noise) {
 		noise.SetFrequency(mFrequency);
 		noise.SetNoiseType(mNoiseType);
 		noise.SetFractalType(mFractalType);

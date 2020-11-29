@@ -30,23 +30,23 @@ public final class NoiseGuiState extends BaseAppState {
 	@Override
 	protected void initialize(Application app) {
 		Container container = new Container();
-		container.addChild(new Label("noise settings")).setMaxWidth(480f);
+		container.addChild(new Label("noise settings")).setMaxWidth(640f);
 
 		PropertyPanel panel = new PropertyPanel(BaseStyles.GLASS);
 
 		panel.addFloatField("strength", settings, "strength", 0f, 100f, 0.25f);
 
-		panel.addEnumField("mNoiseType", settings, "mNoiseType");
-		panel.addEnumField("mFractalType", settings, "mFractalType");
+		panel.addEnumField("Noise Type", settings, "mNoiseType");
+		panel.addEnumField("Fractal Type", settings, "mFractalType");
 
-		panel.addEnumField("mRotationType3D", settings, "mRotationType3D");
-		panel.addEnumField("mCellularDistanceFunction", settings, "mCellularDistanceFunction");
-		panel.addEnumField("mCellularReturnType", settings, "mCellularReturnType");
+		panel.addEnumField("Rot Type3D", settings, "mRotationType3D");
+		panel.addEnumField("Cell Dist Func", settings, "mCellularDistanceFunction");
+		panel.addEnumField("Cell Ret Type", settings, "mCellularReturnType");
 
-		panel.addFloatField("mFrequency", settings, "mFrequency", 0f, 1f, 0.001f);
-		panel.addIntField("mOctaves", settings, "mOctaves", 0, 32, 1);
-		panel.addFloatField("mLacunarity", settings, "mLacunarity", 0, 32, 0.25f);
-		panel.addFloatField("mGain", settings, "mGain", 0, 1f, 0.01f);
+		panel.addFloatField("Frequency", settings, "mFrequency", 0f, 1f, 0.001f);
+		panel.addIntField("Octaves", settings, "mOctaves", 0, 32, 1);
+		panel.addFloatField("Lacunarity", settings, "mLacunarity", 0, 32, 0.25f);
+		panel.addFloatField("Gain", settings, "mGain", 0, 1f, 0.01f);
 
 		container.addChild(panel);
 
