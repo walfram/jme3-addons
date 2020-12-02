@@ -8,7 +8,7 @@ import jme3.common.noise.FastNoiseLite.RotationType3D;
 
 public final class NoiseSettings {
 
-	public 	float strength = 1.0f;
+	// public float strength = 1.0f;
 
 	public float mFrequency = 0.01f;
 	public NoiseType mNoiseType = NoiseType.OpenSimplex2;

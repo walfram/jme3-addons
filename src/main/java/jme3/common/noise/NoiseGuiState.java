@@ -34,7 +34,7 @@ public final class NoiseGuiState extends BaseAppState {
 
 		PropertyPanel panel = new PropertyPanel(BaseStyles.GLASS);
 
-		panel.addFloatField("strength", settings, "strength", 0f, 100f, 0.25f);
+		// panel.addFloatField("strength", settings, "strength", 0f, 100f, 0.25f);
 
 		panel.addEnumField("Noise Type", settings, "mNoiseType");
 		panel.addEnumField("Fractal Type", settings, "mFractalType");
