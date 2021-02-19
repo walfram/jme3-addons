@@ -1,10 +1,15 @@
 package jme3.common.noise;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.scene.Node;
+import com.simsilica.event.EventBus;
 import com.simsilica.lemur.Action;
 import com.simsilica.lemur.ActionButton;
+import com.simsilica.lemur.Button;
 import com.simsilica.lemur.Container;
 import com.simsilica.lemur.RollupPanel;
 import com.simsilica.lemur.props.PropertyPanel;
@@ -12,13 +17,13 @@ import com.simsilica.lemur.style.BaseStyles;
 
 public final class NoiseUiState extends BaseAppState {
 
+	private static final Logger logger = LoggerFactory.getLogger(NoiseUiState.class);
+
 	private final Node scene = new Node("scene");
 	private final NoiseSettings settings = new NoiseSettings();
-	private final Action action;
 
-	public NoiseUiState(Node guiNode, Action action) {
+	public NoiseUiState(Node guiNode) {
 		guiNode.attachChild(scene);
-		this.action = action;
 	}
 
 	@Override
@@ -46,7 +51,13 @@ public final class NoiseUiState extends BaseAppState {
 
 		Container container = new Container();
 		container.addChild(props);
-		container.addChild(new ActionButton(action));
+		container.addChild(new ActionButton(new Action("Apply noise") {
+			@Override
+			public void execute(Button source) {
+				logger.debug("dispatching noise settings via event bus");
+				EventBus.publish(NoiseEvents.noiseChange, settings);
+			}
+		}));
 
 		RollupPanel panel = new RollupPanel("noise settings", container, BaseStyles.GLASS);
 
