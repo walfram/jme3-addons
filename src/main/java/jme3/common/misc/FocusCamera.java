@@ -9,6 +9,7 @@ import com.jme3.scene.Spatial;
 
 import jme3utilities.MyCamera;
 
+// TODO refactor name to better reflect purpose
 public final class FocusCamera {
 
 	private final Camera camera;
