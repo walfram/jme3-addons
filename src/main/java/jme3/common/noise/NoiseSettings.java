@@ -7,7 +7,7 @@ import jme3.common.noise.FastNoiseLite.FractalType;
 import jme3.common.noise.FastNoiseLite.NoiseType;
 import jme3.common.noise.FastNoiseLite.RotationType3D;
 
-public final class NoiseSettings {
+public class NoiseSettings {
 
 	public NoiseType mNoiseType = NoiseType.OpenSimplex2;
 	public RotationType3D mRotationType3D = RotationType3D.None;

@@ -20,9 +20,14 @@ public final class NoiseUiState extends BaseAppState {
 	private static final Logger logger = LoggerFactory.getLogger(NoiseUiState.class);
 
 	private final Node scene = new Node("scene");
-	private final NoiseSettings settings = new NoiseSettings();
+	private final NoiseSettings settings;
 
 	public NoiseUiState(Node guiNode) {
+		this(guiNode, new NoiseSettings());
+	}
+
+	public NoiseUiState(Node guiNode, NoiseSettings noiseSettings) {
+		this.settings = noiseSettings;
 		guiNode.attachChild(scene);
 	}
 
