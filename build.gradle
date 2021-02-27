@@ -9,10 +9,12 @@
 plugins {
     // Apply the java plugin to add support for Java
     id 'java'
+	id 'java-library'
 
     // Apply the application plugin to add support for building a CLI application.
     // id 'application'
     id 'maven'
+    // id 'maven-publish'
 }
 
 repositories {
@@ -24,30 +26,32 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
+group = 'com.github.walfram'
+
 dependencies {
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.2-jre'
+    api 'com.google.guava:guava:28.2-jre'
 
-	implementation 'ch.qos.logback:logback-classic:1.2.3'
-	implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
-	implementation 'org.reflections:reflections:0.9.12'
+	api 'ch.qos.logback:logback-classic:1.2.3'
+	api 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+	api 'org.reflections:reflections:0.9.12'
     
-    implementation 'com.github.stephengold:Heart:6.0.0'
+    api 'com.github.stephengold:Heart:6.0.0'
     
-    implementation 'com.simsilica:sio2:1.5.0'
+    api 'com.simsilica:sio2:1.5.0'
     
-    implementation 'org.codehaus.groovy:groovy-all:3.0.3'
-    implementation 'com.simsilica:lemur:1.14.0'
-    implementation 'com.simsilica:lemur-proto:1.11.0'
-    implementation 'com.simsilica:lemur-props:1.1.1'
+    api 'org.codehaus.groovy:groovy-all:3.0.3'
+    api 'com.simsilica:lemur:1.14.0'
+    api 'com.simsilica:lemur-proto:1.11.0'
+    api 'com.simsilica:lemur-props:1.1.1'
     
-	implementation 'org.jmonkeyengine:jme3-core:3.3.2-stable'
-	implementation 'org.jmonkeyengine:jme3-desktop:3.3.2-stable'
-	implementation 'org.jmonkeyengine:jme3-lwjgl3:3.3.2-stable'
-	implementation 'org.jmonkeyengine:jme3-effects:3.3.2-stable'
-	implementation 'org.jmonkeyengine:jme3-plugins:3.3.2-stable'
+	api 'org.jmonkeyengine:jme3-core:3.3.2-stable'
+	api 'org.jmonkeyengine:jme3-desktop:3.3.2-stable'
+	api 'org.jmonkeyengine:jme3-lwjgl3:3.3.2-stable'
+	api 'org.jmonkeyengine:jme3-effects:3.3.2-stable'
+	api 'org.jmonkeyengine:jme3-plugins:3.3.2-stable'
 	
-	implementation 'org.jmonkeyengine:jme3-testdata:3.3.2-stable'
+	api 'org.jmonkeyengine:jme3-testdata:3.3.2-stable'
 
     testImplementation(platform('org.junit:junit-bom:5.7.0'))
 	testImplementation('org.junit.jupiter:junit-jupiter')
