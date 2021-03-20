@@ -26,6 +26,11 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
+java {
+	sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
 group = 'com.github.walfram'
 
 dependencies {
