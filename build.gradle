@@ -13,15 +13,15 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     // id 'application'
-    id 'maven'
-    // id 'maven-publish'
+    id 'maven-publish'
 }
 
 repositories {
     mavenCentral()
-    maven { url  "https://dl.bintray.com/jmonkeyengine/org.jmonkeyengine" }
-    maven {
-       url = "https://jcenter.bintray.com"
+    google()
+    // maven { url 'https://jitpack.io' }
+    flatDir {
+    	dirs 'lib'
     }
 }
 
@@ -32,6 +32,10 @@ java {
 
 group = 'com.github.walfram'
 
+ext {
+	jmev = '3.4.0-stable'
+}
+
 dependencies {
     // This dependency is used by the application.
     api 'com.google.guava:guava:28.2-jre'
@@ -40,22 +44,23 @@ dependencies {
 	api 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 	api 'org.reflections:reflections:0.9.12'
     
-    api 'com.github.stephengold:Heart:6.0.0'
+    api 'com.github.stephengold:Heart:7.1.0'
     
-    api 'com.simsilica:sio2:1.5.0'
+    api 'com.simsilica:sio2:1.6.0'
+    // api 'com.github.Simsilica:Sio2:sio2-v1.6.0'
     
     api 'org.codehaus.groovy:groovy-all:3.0.3'
     api 'com.simsilica:lemur:1.15.0'
     api 'com.simsilica:lemur-proto:1.12.0'
     api 'com.simsilica:lemur-props:1.1.1'
     
-	api 'org.jmonkeyengine:jme3-core:3.3.2-stable'
-	api 'org.jmonkeyengine:jme3-desktop:3.3.2-stable'
-	api 'org.jmonkeyengine:jme3-lwjgl3:3.3.2-stable'
-	api 'org.jmonkeyengine:jme3-effects:3.3.2-stable'
-	api 'org.jmonkeyengine:jme3-plugins:3.3.2-stable'
+	api "org.jmonkeyengine:jme3-core:$jmev"
+	api "org.jmonkeyengine:jme3-desktop:$jmev"
+	api "org.jmonkeyengine:jme3-lwjgl3:$jmev"
+	api "org.jmonkeyengine:jme3-effects:$jmev"
+	api "org.jmonkeyengine:jme3-plugins:$jmev"
 	
-	api 'org.jmonkeyengine:jme3-testdata:3.3.2-stable'
+	api "org.jmonkeyengine:jme3-testdata:$jmev"
 
     testImplementation(platform('org.junit:junit-bom:5.7.0'))
 	testImplementation('org.junit.jupiter:junit-jupiter')
