@@ -7,27 +7,27 @@
  */
 
 plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
+	// Apply the java plugin to add support for Java
+	id 'java'
 	id 'java-library'
 
-    // Apply the application plugin to add support for building a CLI application.
-    // id 'application'
-    id 'maven-publish'
+	// Apply the application plugin to add support for building a CLI application.
+	// id 'application'
+	id 'maven-publish'
 }
 
 repositories {
-    mavenCentral()
-    google()
-    // maven { url 'https://jitpack.io' }
-    flatDir {
-    	dirs 'lib'
-    }
+	mavenCentral()
+	google()
+	// maven { url 'https://jitpack.io' }
+	flatDir {
+		dirs 'lib'
+	}
 }
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+	targetCompatibility = JavaVersion.VERSION_11
 }
 
 group = 'com.github.walfram'
@@ -37,47 +37,62 @@ ext {
 }
 
 dependencies {
-    // This dependency is used by the application.
-    api 'com.google.guava:guava:28.2-jre'
+	// This dependency is used by the application.
+	api 'com.google.guava:guava:28.2-jre'
 
 	api 'ch.qos.logback:logback-classic:1.2.3'
 	api 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
 	api 'org.reflections:reflections:0.9.12'
-    
-    api 'com.github.stephengold:Heart:7.1.0'
-    
-    api 'com.simsilica:sio2:1.6.0'
-    // api 'com.github.Simsilica:Sio2:sio2-v1.6.0'
-    
-    api 'org.codehaus.groovy:groovy-all:3.0.3'
-    api 'com.simsilica:lemur:1.15.0'
-    api 'com.simsilica:lemur-proto:1.12.0'
-    api 'com.simsilica:lemur-props:1.1.1'
-    
+
+	api 'com.github.stephengold:Heart:7.1.0'
+
+	api 'com.simsilica:sio2:1.6.0'
+	// api 'com.github.Simsilica:Sio2:sio2-v1.6.0'
+
+	api 'org.codehaus.groovy:groovy-all:3.0.3'
+	api 'com.simsilica:lemur:1.15.0'
+	api 'com.simsilica:lemur-proto:1.12.0'
+	api 'com.simsilica:lemur-props:1.1.1'
+
 	api "org.jmonkeyengine:jme3-core:$jmev"
 	api "org.jmonkeyengine:jme3-desktop:$jmev"
 	api "org.jmonkeyengine:jme3-lwjgl3:$jmev"
 	api "org.jmonkeyengine:jme3-effects:$jmev"
 	api "org.jmonkeyengine:jme3-plugins:$jmev"
-	
+
 	api "org.jmonkeyengine:jme3-testdata:$jmev"
 
-    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+	testImplementation(platform('org.junit:junit-bom:5.7.0'))
 	testImplementation('org.junit.jupiter:junit-jupiter')
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier = 'javadoc'
+	from javadoc.destinationDir
+}
+
+artifacts {
+	archives sourcesJar
+	archives javadocJar
+}
+
 jar {
-//	manifest {
-//		attributes (
-//			'Class-Path': configurations.compile.collect {it.getName()}.join(' '),
-//			'Main-Class': 'com.test.MainClassName'
-//		)
-//	}
-//	from {
-//		configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it) }
-//	}
-	
-//	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	//	manifest {
+	//		attributes (
+	//			'Class-Path': configurations.compile.collect {it.getName()}.join(' '),
+	//			'Main-Class': 'com.test.MainClassName'
+	//		)
+	//	}
+	//	from {
+	//		configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it) }
+	//	}
+
+	//	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 //application {
