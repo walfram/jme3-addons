@@ -27,7 +27,7 @@ public final class CollisionWith {
 		this.click2d = click2d;
 	}
 
-	public Optional<CollisionResult> collisionResults() {
+	public Optional<CollisionResult> collision() {
 		Vector3f click3d = camera.getWorldCoordinates(click2d, 0f).clone();
 		Vector3f dir = camera.getWorldCoordinates(click2d, 1f).subtractLocal(click3d).normalizeLocal();
 
