@@ -2,12 +2,14 @@ package jme3.common.collision;
 
 import com.jme3.app.Application;
 import com.jme3.collision.Collidable;
+import com.jme3.collision.CollisionResult;
 import com.jme3.collision.CollisionResults;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
-import com.jme3.scene.Geometry;
+
+import java.util.Optional;
 
 public final class CollisionWith {
 
@@ -25,25 +27,7 @@ public final class CollisionWith {
 		this.click2d = click2d;
 	}
 
-	public Geometry geometry() {
-		CollisionResults results = collisionResults();
-
-		if (results.size() > 0)
-			return results.getClosestCollision().getGeometry();
-
-		return null;
-	}
-
-	public Vector3f contactPoint() {
-		CollisionResults results = collisionResults();
-
-		if (results.size() > 0)
-			return results.getClosestCollision().getContactPoint();
-
-		return null;
-	}
-
-	private CollisionResults collisionResults() {
+	public Optional<CollisionResult> collisionResults() {
 		Vector3f click3d = camera.getWorldCoordinates(click2d, 0f).clone();
 		Vector3f dir = camera.getWorldCoordinates(click2d, 1f).subtractLocal(click3d).normalizeLocal();
 
@@ -52,7 +36,7 @@ public final class CollisionWith {
 		CollisionResults results = new CollisionResults();
 		collidable.collideWith(ray, results);
 
-		return results;
+		return Optional.ofNullable(results.getClosestCollision());
 	}
 
 }

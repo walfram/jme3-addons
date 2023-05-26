@@ -23,7 +23,7 @@ java {
 }
 
 group = 'com.github.walfram'
-version = '0.0.1'
+version = '0.0.2'
 
 ext {
 	jmev = '3.6.0-stable'
